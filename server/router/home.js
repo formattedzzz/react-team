@@ -1,5 +1,6 @@
 const Router = require('koa-router')
 const home = new Router()
+var sendEmail = require('../utils/email')
 
 home.get('/leo', async ( ctx )=>{
   // ctx.type = 'html'
@@ -20,11 +21,23 @@ home.get('/leo', async ( ctx )=>{
   log.info(ctx.store)
   console.log(ctx.session)
 })
+let currentList = {
 
+}
 home.post('/bob', async ( ctx )=>{
   // let postData = ctx.request.body
   // console.log(ctx.request)
-  ctx.body = {name: 'jjjj'}
+  let randomcode = Math.random().toString(36).substr(2)
+  currentList['leooo'] = randomcode
+  let mail = {
+    from: 'leooo <leooo9527@126.com>',
+    subject: '测试',
+    to: '614791110@qq.com',
+    text: `<a href=\"http://localhost:7006/home/email-check?username=leooo&outdate=1562324921190&code=${randomcode}\">点击激活</a>`
+  }
+  sendEmail(mail)
+  // ctx.body = {name: 'jjjj'}
+  ctx.redirect('/?from=eo#fun')
   // ctx.store.name = 'chenlei'
   // let url = ctx.url
   // // 从上下文的request对象中获取
@@ -41,6 +54,24 @@ home.post('/bob', async ( ctx )=>{
   //   ctx_query,
   //   ctx_querystring
   // }
+})
+home.get('/email-check', async ( ctx )=>{
+  let {username, outdate, code} = ctx.query
+  console.log(username, outdate, code)
+  // 这里还要做防重复注册
+  if (currentList[username] === code) {
+    ctx.type = 'html'
+    ctx.body = `
+      <div style="font-size:30px;padding:20px;font-weight:600;text-align:center;">
+      激活成功！<a href="http://localhost:3000/login">去登录</a></div>
+    `
+  } else {
+    ctx.type = 'html'
+    ctx.body = `
+      <div style="font-size:30px;padding:20px;font-weight:600;text-align:center;">
+      激活连接已失效！<a href="http://localhost:3000/login">重新注册</a></div>
+    `
+  }
 })
 
 // 登录的流程 首先用户没有登录 没有cookie 会走!ctx.session.user_id
