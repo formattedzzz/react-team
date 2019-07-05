@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### SDK自定义配置说明
 
-## Available Scripts
+- 放开自定义配置 **npm run eject**
 
-In the project directory, you can run:
+- 支持stylus编译器
 
-### `npm start`
+- 配置src源码目录别名@
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 加入react-router、axios、antd、配置按需引入
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- 加入装饰器语法的支持
 
-### `npm test`
+- 加入redux+react-redux、mobx+mobx-react两套数据管理方案 决定选用mobx 详细阅读=> /src/mobx/index.js 及相关页面 mobx的装饰器语法采用编译器提供方案
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 加入eslint配置清单
 
-### `npm run build`
+- 加入自定义eventHub(适合前端使用的发布订阅模式) 详细阅读=> /src/utils/eventHub.js
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 加入开发环境接口代理 http://localhost:7006
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### 服务端目录说明
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+server	服务端总目录（忽略eslint）
 
-### `npm run eject`
+服务端选型： koa2及其套件 (路由、静态资源托管、session+cookie机制、body解析)、socket.io
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+数据库操作：打算原生sql + sequelize + redis
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+单文件日志：log4js  服务端路径 /static/logs (gitignore) 在线访问形式 http://localhost:7006/logs/info.log 日志类型info.log、error.log
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+开发环境工具：nodemon
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 整体架构计划
 
-## Learn More
+单页应用 后面可以考虑做成多页
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+注册：邮箱注册
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+登录：用户名、邮箱登录
 
-### Code Splitting
+基本功能：teambition核心功能 + 站内通知 + 桌面端通知 + 即时消息、评论系统
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+其他库：react-dnd
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

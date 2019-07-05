@@ -1,14 +1,133 @@
-body {
+/* 初始化样式 */
+/* 禁用iPhone中Safari的字号自动调整 */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+/* 去除iPhone中默认的input样式 */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input,
+button {
+  -webkit-appearance:none;
+  resize: none;
+  border: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+/* 设置HTML5元素为块 */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+  display: block;
+}
+/* 图片自适应 */
+img {
+  /*max-width: 100%;*/
+  /* max-height: 100%; */
+  height: auto;
+  width: auto;
+}
+/* 初始化 */
+body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,img,button,form,table,th,tr,td,tbody,
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  border: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  font-family: Microsoft YaHei, simhei, Tahoma, Arial, sans-serif;
+  color: #333333;
+  background-color: #FFFFFF;
+}
+em,i {
+  font-style: normal;
+}
+strong {
+  font-weight: normal;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+.clearfix {
+  zoom: 1;
+}
+a {
+  text-decoration: none;
+  font-family: Microsoft YaHei, Tahoma, Arial, sans-serif;
+}
+a:hover,
+a:active,
+a:visited {
+  text-decoration: none;
+}
+ul,ol {
+  list-style: none;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-size: 100%;
+  font-family: Microsoft YaHei;
+}
+img {
+  border: none;
+  vertical-align: middle;
+}
+html, body{
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  -ms-overflow-x: hidden;
+  overflow-x: hidden;
+}
+.active-route{
+  background:#e80;
+}
+#root{
+  width: 100%;
+  min-height: 100vh;
+}
+input{
+  outline-style: none ;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  padding-left: 12px;
+  width: 240px;
+  height: 36px;
+  line-height: 36px;
+  background: #f8f8f8;
+}
+input:focus{
+  border-color: #e80;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px #eb0, 0 0 4px rgb(238, 205, 157);
+  box-shadow: inset 0 1px 1px #eb0, 0 0 4px rgb(238, 205, 157);
+}
+button{
+  outline-style: none;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 120px;
+  height: 36px;
+  line-height: 36px;
+  background: #e80;
+  color: #fff;
+  text-align: center;
+}
+button:hover{
+  opacity: 0.8;
 }

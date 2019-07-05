@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
+  <script src="./lib/jquery.min.js"></script>
+  <title>React App</title>
+  <style>
+    .demo {
+      width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    div:empty{
+      width: 100px;
+      height: 100px;
+      background: #333;
+    }
+    div.empty{
+      background: #555;
+    }
+
+    .tab-title {
+      width: 300px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      list-style: none;
+      border: 1px solid #333;
+      margin: 40px auto 0;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tab-title li {
+      float: left;
+      width: 101px;
+      border-right: 1px solid #333;
+      display: table
+    }
+
+    .tab-title li:nth-child(3) {
+      border: none;
+    }
+
+    .tab-title li>a {
+      color: #333;
+      text-decoration: none;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .tab-title li:nth-child(1)>a {
+      border-top-left-radius: 10px;
+    }
+
+    .tab-title li:nth-child(3)>a {
+      border-top-right-radius: 10px;
+    }
+
+    .tab-title li>a:hover {
+      background-color: #8BB7F9;
+    }
+
+    .tab-con {
+      position: absolute;
+      width: 300px;
+      height: 150px;
+      line-height: 150px;
+      text-align: center;
+      border: 1px solid #333;
+      border-top: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background: #fff;
+    }
+
+    #music:target,
+    #fun:target,
+    #photo:target {
+      z-index: 1;
+    }
+    .text-test{
+      border: 1px solid #ccc;
+      box-decoration-break: clone;
+    }
+    .ffc{
+      margin: 20px auto;
+      display: flex;
+      height: 160px;
+      background: #eee;
+    }
+    .ffc .ffc-item{
+      margin: auto 0;
+    }
+    .ffc .ffc-item.item-last{
+      margin-left: auto;
+    }
+
+    .ffc2-con{
+      width: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #eee;
+    }
+    .ffc2{
+      min-width: 100%;
+      margin: 20px auto;
+      display: inline-flex;
+      height: 160px;
+      flex-wrap: nowrap;
+    }
+    .ffc2 .ffc2-item{
+      width: 300px;
+      margin: auto 0;
+      margin-left: 20px;
+    }
+    .class-item{
+      width: 200px;
+      height: 100px;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 0 6px #aaa;
+      margin-bottom: 20rpx;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .class-item::after{
+      content: '跟课';
+      display: inline-block;
+      width: 80px;
+      height: 20px;
+      font-size: 10px;
+      background: #f45b36;
+      color: #fff;
+      position: absolute;
+      right: -30px;
+      top: -4px;
+      text-align: center;
+      z-index: 9;
+      transform: rotate(45deg);
+      padding-top: 10px;
+    }
+    .inline{
+      padding: 20px;
+      background: #eee;
+      font-size: 0;
+    }
+    .inline span{
+      display: inline-block;
+      width: 30px;
+      height: 20px;
+      background: #e80;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">leo-team backend api center</div>
+  <div id="modal">
+    <img style="width:200px;height:auto;" src="/img/mp1.jpg" alt="" srcset="">
+
+    <ul class="tab-title">
+      <li><a href="#music">音乐</a></li>
+      <li><a href="#fun">娱乐</a></li>
+      <li><a href="#photo">摄影</a></li>
+    </ul>
+    <div style="overflow: hidden;height: 150px;">
+      <div class="tab-con" id="music">音乐</div>
+      <div class="tab-con" id="fun">娱乐</div>
+      <div class="tab-con" id="photo">摄影</div>
+    </div>
+    <div class="inline">
+      <span></span><span></span> <span></span>
+      <span></span>
+    </div>
+    <div class="ffc">
+      <div class="ffc-item"></div>
+      <div class="ffc-item"></div>
+      <div class="ffc-item"></div>
+      <div class="ffc-item"></div>
+      <div class="ffc-item"></div>
+    </div>
+
+    <div class="ffc2-con">
+    <div class="ffc2">
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+      <div class="ffc2-item"></div>
+    </div>
+    </div>
+    <div class="ffc">
+      <div class="ffc-item"></div>
+      <div class="ffc-item"></div>
+      <div class="ffc-item"></div>
+      <div class="ffc-item item-last"></div>
+      <div class="ffc-item item-last"></div>
+    </div>
+    <div class="class-item"> </div>
+    <form method="POST" action="/home/bob">
+      <input type="text" name="name">
+      <input type="text" name="age">
+      <button type="submit">提交</button>
+    </form>
+
+  </div>
+  <script>
+    $(function () {
+      // $.ajax({
+      //   url: '/home/bob',
+      //   type: 'POST',
+      //   contentType: "application/json; charset=utf-8",
+      //   data: JSON.stringify({
+      //     name: 'bbbbbbb',
+      //     age: 3456666
+      //   }),
+      //   dataType: 'json',
+      //   success: (res) => {
+      //     console.log(res)
+      //   }
+      // })
+      function logLoadInfo () {
+        setTimeout(function(){
+          let t = performance.timing
+          console.log('DNS查询耗时 ：' + (t.domainLookupEnd - t.domainLookupStart).toFixed(0))
+          console.log('TCP链接耗时 ：' + (t.connectEnd - t.connectStart).toFixed(0))
+          console.log('request请求耗时 ：' + (t.responseEnd - t.responseStart).toFixed(0))
+          console.log('解析dom树耗时 ：' + (t.domComplete - t.domInteractive).toFixed(0))
+          console.log('白屏时间 ：' + (t.responseStart - t.navigationStart).toFixed(0))
+          console.log('domready时间 ：' + (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0))
+          console.log('onload时间 ：' + (t.loadEventEnd - t.navigationStart).toFixed(0))
+          if (t = performance.memory) {
+            console.log('js内存使用占比 ：' + (t.usedJSHeapSize / t.totalJSHeapSize * 100).toFixed(2) + '%')
+          }
+        })
+      }
+    })
+  </script>
+</body>
+<!--  -->
+</html>
